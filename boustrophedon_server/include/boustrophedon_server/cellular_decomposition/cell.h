@@ -56,17 +56,21 @@ struct Cell
 };
 }  // namespace bcd
 
-template <>
-struct std::hash<const bcd::Cell*>
+namespace std
 {
-  std::size_t operator()(const bcd::Cell* const& cell) const
+
+template <>
+struct hash<const bcd::Cell*>
+{
+  size_t operator()(const bcd::Cell* const& cell) const
   {
-    std::size_t seed = 17;
+    size_t seed = 17;
     boost::hash_combine(seed, std::make_pair(cell->start.point->x(), cell->start.point->y()));
     boost::hash_combine(seed, std::make_pair(cell->end.point->x(), cell->end.point->y()));
     return seed;
   }
 };
+}
 
 std::ostream& operator<<(std::ostream& out, bcd::Event event);
 std::ostream& operator<<(std::ostream& out, const bcd::Vertex& vertex);

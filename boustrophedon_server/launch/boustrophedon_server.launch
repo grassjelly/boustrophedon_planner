@@ -1,5 +1,5 @@
 <launch>
-    <node pkg="boustrophedon_server" name="boustrophedon_server" type="boustrophedon_server" output="screen" >
+    <node pkg="boustrophedon_server" name="boustrophedon_server" type="boustrophedon_planner_server" output="screen" >
         <param name="outline_layer_count" value="1"/>
         <param name="stripe_separation" value="1.0"/>
         <param name="stripe_angle" value="0.0"/>
