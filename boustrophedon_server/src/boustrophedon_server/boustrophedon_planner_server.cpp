@@ -43,7 +43,8 @@ void BoustrophedonPlannerServer::executePlanPathAction(const boustrophedon_msgs:
 
   std::vector<NavPoint> path;
 
-  auto preprocess_transform = preprocessPolygon(polygon, robot_position, stripe_angle_);
+  // auto preprocess_transform = preprocessPolygon(polygon, robot_position, stripe_angle_);
+  auto preprocess_transform = preprocessPolygon(polygon, robot_position, goal->stripe_angle.data);
 
   Polygon fill_polygon;
   outline_planner_.addToPath(polygon, robot_position, path, fill_polygon);
@@ -54,6 +55,7 @@ void BoustrophedonPlannerServer::executePlanPathAction(const boustrophedon_msgs:
 
   for (const auto& subpoly : sub_polygons)
   {
+    striping_planner_.setParameters({goal->stripe_separation.data});
     striping_planner_.addToPath(subpoly, robot_position, path);
   }
 

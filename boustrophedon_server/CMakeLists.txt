@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   boustrophedon_msgs
   actionlib
   tf
+  std_msgs
   geometry_msgs
   nav_msgs
   rosparam_shortcuts
@@ -22,6 +23,7 @@ catkin_package(
   boustrophedon_msgs
   actionlib
   tf
+  std_msgs
   geometry_msgs
   nav_msgs
   rosparam_shortcuts
