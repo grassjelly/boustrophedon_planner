@@ -47,6 +47,7 @@ void BoustrophedonPlannerServer::executePlanPathAction(const boustrophedon_msgs:
   auto preprocess_transform = preprocessPolygon(polygon, robot_position, goal->stripe_angle.data);
 
   Polygon fill_polygon;
+  outline_planner_.setParameters({ outline_layer_count_, goal->stripe_separation.data});
   outline_planner_.addToPath(polygon, robot_position, path, fill_polygon);
 
   PolygonDecomposer polygon_decomposer{};
